@@ -50,3 +50,6 @@ AllCops:
     - 'vendor/bundle/**/*'
     - 'node_modules/**/*'
   NewCops: enable
+
+Infinum/FactoryBotAssociation: 
+  Safe: false
