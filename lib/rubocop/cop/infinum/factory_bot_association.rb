@@ -53,19 +53,17 @@ module RuboCop
           inline_association_definition(node) do |association_name, factory_name|
             message = format(MSG, association_name: association_name.to_s, factory_name: factory_name.to_s)
 
-            add_offense(node, location: node, message: message)
+            add_offense(node, message: message)
           end
         end
 
         def on_send(node)
-          return unless corrections.empty?
-
           association_definition(node) do |association_name, factory_name|
             factory_name = [association_name] if factory_name.empty?
 
             message = format(MSG, association_name: association_name.to_s, factory_name: factory_name.first.to_s)
 
-            add_offense(node, location: node, message: message)
+            add_offense(node, message: message)
           end
         end
 
@@ -82,11 +80,11 @@ module RuboCop
         private
 
         def expression(node)
-          @expression = if node.block_type?
-                          inline_association_definition(node)
-                        else
-                          association_definition(node).flatten
-                        end
+          if node.block_type?
+            inline_association_definition(node)
+          else
+            association_definition(node).flatten
+          end
         end
       end
     end
