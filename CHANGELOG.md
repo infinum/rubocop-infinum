@@ -1,5 +1,9 @@
 # RuboCop Infinum Change Log
 
+## 0.9.0 (Oct 7th 2024)
+
+- "Cop#corrections is deprecated" warning fixed ([PR#21](https://github.com/infinum/rubocop-infinum/pull/21) tnx @unavailabl3)
+
 ## 0.8.0 (May 11th, 2022)
 
 - Remove TargetRubyVersion from rubocop yml template (@cilim)
