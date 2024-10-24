@@ -18,7 +18,9 @@ module RuboCop
       #   class User < ActiveRecord::Base
       #     attribute :confirmed_at, :datetime, default: -> { Time.zone.now }
       #   end
-      class AttributeDefaultBlockValue < ::RuboCop::Cop::Cop
+      class AttributeDefaultBlockValue < ::RuboCop::Cop::Base
+        extend AutoCorrector
+
         MSG = 'Pass method in a block to `:default` option.'
 
         def_node_matcher :default_attribute, <<~PATTERN
@@ -29,17 +31,14 @@ module RuboCop
 
         def on_send(node)
           default_attribute(node) do |hash_pair|
-            value = attribute(hash_pair)
+            target_node = attribute(hash_pair)
+            return unless target_node.send_type?
 
-            add_offense(node, location: value) if value.send_type?
-          end
-        end
+            add_offense(target_node, message: MSG) do |corrector|
+              expression = attribute(default_attribute(node))
 
-        def autocorrect(node)
-          expression = attribute(default_attribute(node))
-
-          lambda do |corrector|
-            corrector.replace(expression, "-> { #{expression.source} }")
+              corrector.replace(target_node, "-> { #{expression.source} }")
+            end
           end
         end
       end

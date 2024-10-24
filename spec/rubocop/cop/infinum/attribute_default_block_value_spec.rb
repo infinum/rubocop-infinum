@@ -4,7 +4,7 @@ RSpec.describe(RuboCop::Cop::Infinum::AttributeDefaultBlockValue, :config) do
   subject(:cop) { described_class.new(config) }
 
   let(:config) { RuboCop::Config.new }
-  let(:message) { 'Pass method in a block to `:default` option.' }
+  let(:message) { 'Infinum/AttributeDefaultBlockValue: Pass method in a block to `:default` option.' }
 
   context 'when `:default` option is last' do
     it('disallows method') do
