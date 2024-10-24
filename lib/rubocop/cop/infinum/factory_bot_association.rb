@@ -38,7 +38,10 @@ module RuboCop
       #        name { 'J. R. R. Tolkien' }
       #      end
       #    end
-      class FactoryBotAssociation < ::RuboCop::Cop::Cop
+      class FactoryBotAssociation < ::RuboCop::Cop::Base
+        extend AutoCorrector
+        include IgnoredNode
+
         MSG = 'Use %<association_name>s { build(:%<factory_name>s) } instead'
 
         def_node_matcher :association_definition, <<~PATTERN
@@ -53,7 +56,7 @@ module RuboCop
           inline_association_definition(node) do |association_name, factory_name|
             message = format(MSG, association_name: association_name.to_s, factory_name: factory_name.to_s)
 
-            add_offense(node, message: message)
+            handle_offense(node, message)
           end
         end
 
@@ -63,21 +66,21 @@ module RuboCop
 
             message = format(MSG, association_name: association_name.to_s, factory_name: factory_name.first.to_s)
 
-            add_offense(node, message: message)
-          end
-        end
-
-        def autocorrect(node)
-          lambda do |corrector|
-            if expression(node).size == 1
-              corrector.replace(node, "#{expression(node)[0]} { build(:#{expression(node)[0]}) }")
-            else
-              corrector.replace(node, "#{expression(node)[0]} { build(:#{expression(node)[1]}) }")
-            end
+            handle_offense(node, message)
           end
         end
 
         private
+
+        def handle_offense(node, message)
+          add_offense(node, message: message) do |corrector|
+            next if part_of_ignored_node?(node)
+
+            corrector.replace(node, "#{expression(node).first} { build(:#{expression(node).last}) }")
+          end
+
+          ignore_node(node)
+        end
 
         def expression(node)
           if node.block_type?
