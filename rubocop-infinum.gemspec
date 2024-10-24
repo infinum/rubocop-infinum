@@ -31,7 +31,9 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency('rspec', '~> 3.9')
 
   spec.add_runtime_dependency('rubocop', '>= 1.28.0')
+  spec.add_runtime_dependency('rubocop-factory_bot')
+  spec.add_runtime_dependency('rubocop-performance')
   spec.add_runtime_dependency('rubocop-rails')
   spec.add_runtime_dependency('rubocop-rspec')
-  spec.add_runtime_dependency('rubocop-performance')
+  spec.add_runtime_dependency('rubocop-rspec_rails')
 end
