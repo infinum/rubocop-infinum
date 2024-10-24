@@ -1,5 +1,9 @@
 # RuboCop Infinum Change Log
 
+## 0.9.1 (Oct 24th 2024)
+
+- Resolved deprecated usage of `RuboCop::Cop::Cop` and updated cops to use new rubocop API (PR[#22](https://github.com/infinum/rubocop-infinum/pull/22) @PetarCurkovic)
+
 ## 0.9.0 (Oct 7th 2024)
 
 - "Cop#corrections is deprecated" warning fixed ([PR#21](https://github.com/infinum/rubocop-infinum/pull/21) tnx @unavailabl3)
