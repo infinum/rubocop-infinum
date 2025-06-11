@@ -6,6 +6,7 @@ require 'rubocop'
 
 require_relative 'rubocop/infinum'
 require_relative 'rubocop/infinum/version'
+require_relative 'rubocop/infinum/plugin'
 
 require_relative 'rubocop/cop/infinum_cops'
 
