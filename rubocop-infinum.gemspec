@@ -31,11 +31,11 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency('pry-byebug', '< 4')
   spec.add_development_dependency('rspec', '~> 3.9')
 
-  spec.add_dependency('lint_roller', '~> 1.1')
-  spec.add_dependency('rubocop', '>= 1.72.1', '< 2.0')
-  spec.add_runtime_dependency('rubocop-factory_bot', '>=2.27.1', '< 3.0')
-  spec.add_runtime_dependency('rubocop-performance', '>= 1.24.0', '< 2.0')
-  spec.add_runtime_dependency('rubocop-rails', '>= 2.30.0', '< 3.0')
-  spec.add_runtime_dependency('rubocop-rspec', '>= 3.5.0', '< 4.0')
-  spec.add_runtime_dependency('rubocop-rspec_rails', '>= 2.31.0', '< 3.0')
+  spec.add_dependency('lint_roller')
+  spec.add_dependency('rubocop', '>= 1.72.1')
+  spec.add_runtime_dependency('rubocop-factory_bot', '>=2.27.1')
+  spec.add_runtime_dependency('rubocop-performance', '>= 1.24.0')
+  spec.add_runtime_dependency('rubocop-rails', '>= 2.30.0')
+  spec.add_runtime_dependency('rubocop-rspec', '>= 3.5.0')
+  spec.add_runtime_dependency('rubocop-rspec_rails', '>= 2.31.0')
 end
