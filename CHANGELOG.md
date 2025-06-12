@@ -1,5 +1,9 @@
 # RuboCop Infinum Change Log
 
+## 1.0.0 (Jun 12th 2025)
+
+- Pluginify Rubocop Infinum (PR[#23](https://github.com/infinum/rubocop-infinum/pull/23) @imnastasia)
+
 ## 0.9.1 (Oct 24th 2024)
 
 - Resolved deprecated usage of `RuboCop::Cop::Cop` and updated cops to use new rubocop API (PR[#22](https://github.com/infinum/rubocop-infinum/pull/22) @PetarCurkovic)
