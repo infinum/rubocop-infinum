@@ -17,6 +17,7 @@ Gem::Specification.new do |spec|
   spec.metadata['allowed_push_host'] = 'https://rubygems.org'
   spec.metadata['homepage_uri'] = spec.homepage
   spec.metadata['source_code_uri'] = 'https://github.com/infinum/rubocop-infinum'
+  spec.metadata['default_lint_roller_plugin'] = 'RuboCop::Infinum::Plugin'
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
@@ -30,10 +31,11 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency('pry-byebug', '< 4')
   spec.add_development_dependency('rspec', '~> 3.9')
 
-  spec.add_runtime_dependency('rubocop', '>= 1.28.0')
-  spec.add_runtime_dependency('rubocop-factory_bot')
-  spec.add_runtime_dependency('rubocop-performance')
-  spec.add_runtime_dependency('rubocop-rails')
-  spec.add_runtime_dependency('rubocop-rspec')
-  spec.add_runtime_dependency('rubocop-rspec_rails')
+  spec.add_dependency('lint_roller')
+  spec.add_dependency('rubocop', '>= 1.72.1')
+  spec.add_runtime_dependency('rubocop-factory_bot', '>=2.27.1')
+  spec.add_runtime_dependency('rubocop-performance', '>= 1.24.0')
+  spec.add_runtime_dependency('rubocop-rails', '>= 2.30.0')
+  spec.add_runtime_dependency('rubocop-rspec', '>= 3.5.0')
+  spec.add_runtime_dependency('rubocop-rspec_rails', '>= 2.31.0')
 end
